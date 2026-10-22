@@ -1,0 +1,23 @@
+1. Muestra los detalles de los trabajos donde el salario mínimo es mayor que 10000.
+
+{ t | jobs(t) and t.min_salary > 10000}
+
+3. Muestra el nombre y la fecha de ingreso de los empleados que son "Programmer" o "Sales Manager".
+
+{e.first_name, e.hire_date |employees(e)andexistsj(jobs(j)and(e.job_id = j.job_id)and(j.job_title = 'Programmer' or j.job_title = 'Sales Manager'))}
+
+5. Muestra los detalles del empleado con ID 150 o 160.
+
+{ e | e ∈ employees ∧ (e.employee_id = 150 ∨ e.employee_id = 160)}
+
+7. Muestra el título del trabajo y la diferencia entre el salario máximo y mínimo para los trabajos con salario máximo en el rango de 10000 a 20000.
+
+{ j.job_title, (j.max_salary - j.min_salary)→difer | j ∈ jobs ∧ j.max_salary >= 10000 ∧ j.max_salary <= 20000}
+
+11. Muestra los empleados que se unieron en el mes de mayo. Use la función month(d) que devuelve el # de mes de "d".
+
+{ e | e ∈ employees ∧ MONTH(e.hire_date) = 5 }
+
+13. Muestra el nombre y la fecha del primer salario de los empleados.
+
+{ e.first_name, concat(year(hire_date),'-',month(hire_date)+1,'-',day(hire_date))→fecha_pago | e ∈ employees }

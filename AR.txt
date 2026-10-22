@@ -1,0 +1,59 @@
+1. Muestra los detalles de los trabajos donde el salario mínimo es mayor que 10000.
+
+σ min_salary > 10000 (jobs)
+
+2. Muestra el nombre y la fecha de ingreso de los empleados que se unieron entre 2002 y 2005.
+
+π first_name, last_name, hire_date (σ hire_date ≥ date('2002-01-01') ∧ hire_date ≤ date('2005-12-31')  (employees))
+
+3. Muestra el nombre y la fecha de ingreso de los empleados que son "Programmer" o "Sales Manager".
+
+π first_name, last_name, hire_date (σ job_title = 'Programmer' ∨ job_title = 'Sales Manager'  (employees ⨝ employees.job_id = jobs.job_id jobs))
+
+4. Muestra los empleados que se unieron después del 1 de enero de 2008.
+
+σ hire_date > date('2008-01-01') (employees)
+
+5.Muestra los detalles del empleado con ID 150 o 160.
+
+σ employee_id = 150 ∨ employee_id = 160 (employees)
+
+6. Muestra el nombre, salario, porcentaje de comisión y fecha de ingreso de los empleados cuyo salario es menor que 10000.
+
+π first_name, salary, commission_pct, hire_date (  σ salary < 10000 (employees))
+
+7. Muestra el título del trabajo y la diferencia entre el salario máximo y mínimo para los trabajos con salario máximo en el rango de 10000 a 20000.
+
+π job_title, (max_salary - min_salary)→diferencia ( σ max_salary >= 10000 ∧ max_salary <= 20000 (jobs))
+
+8. Muestra el nombre, salario anual de los empleados.
+
+π first_name, (salary * 12)→sal_anual (employees)
+
+9. Muestra los detalles de los trabajos en orden descendente por título.
+
+τ job_title DESC (jobs)
+
+10. Empleados cuyo nombre o apellido comienza con S.
+
+σ first_name LIKE 'S%' ∨ last_name LIKE 'S%' (employees)
+
+11. Muestra los empleados que se unieron en el mes de mayo. Use la función month(d) que devuelve el # de mes de "d".
+
+σ MONTH(hire_date) = 5 (employees)
+
+12. Muestra los detalles de los empleados cuyo porcentaje de comisión es nulo, cuyo salario está en el rango de 5000 a 10000 y pertenecen al departamento 30.
+
+σ commission_pct = null  ∧ salary >= 5000  ∧ salary <= 10000  ∧  depaemployeesrtment_id = 30 (employees)
+
+13. Muestra el nombre y la fecha del primer salario de los empleados.
+
+π first_name, concat(year(hire_date),'-',month(hire_date)+1,'-',day(hire_date))→fecha_pago (employees)
+
+14. Muestra el nombre y la experiencia (en años) de los empleados. Use la función now() que devuelve la fecha del sistema.
+
+π first_name, (YEAR(NOW()) - YEAR(hire_date))→exper (employees)
+
+
+
+
