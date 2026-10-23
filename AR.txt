@@ -54,6 +54,16 @@
 
 π first_name, (YEAR(NOW()) - YEAR(hire_date))→exper (employees)
 
+15. Muestra el nombre de los empleados que se unieron en 2001.
 
+σ YEAR(hire_date) = 2001 (employees)
+
+16. Muestra el nombre y el apellido después de convertir cada nombre en mayúscula y apellido en minúscula. Use las funciones ucase(s) y lcase(s).
+
+π ucase(first_name)→first_name, lcase(last_name)→last_name (employees)
+
+17. Muestra el título del trabajo concatenado con el id. Use la función concat(s1,s2,.. sn)
+
+π CONCAT(job_title, job_id)→clave (jobs)
 
 
