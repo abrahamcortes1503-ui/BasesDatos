@@ -21,3 +21,15 @@
 13. Muestra el nombre y la fecha del primer salario de los empleados.
 
 { e.first_name, concat(year(hire_date),'-',month(hire_date)+1,'-',day(hire_date))→fecha_pago | e ∈ employees }
+
+15. Muestra el nombre de los empleados que se unieron en 2001.
+
+{ e | e ∈ employees ∧ YEAR(e.hire_date) = 2001 }
+
+16. Muestra el nombre y el apellido después de convertir cada nombre en mayúscula y apellido en minúscula. Use las funciones ucase(s) y lcase(s).
+
+{ UCASE(e.first_name)→first_name, LCASE(e.last_name)→last_name |  e ∈ employees}
+
+17. Muestra el título del trabajo concatenado con el id. Use la función concat(s1,s2,.. sn)
+
+{ CONCAT(j.job_title, j.job_id)→clave | j ∈ jobs }
