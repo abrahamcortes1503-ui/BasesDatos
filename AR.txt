@@ -46,6 +46,10 @@
 
 σ commission_pct = null  ∧ salary >= 5000  ∧ salary <= 10000  ∧  depaemployeesrtment_id = 30 (employees)
 
+otra forma usando between
+
+σ commission_pct = null  ∧ salary between 5000 and 10000  ∧  depaemployeesrtment_id = 30 (employees)
+
 13. Muestra el nombre y la fecha del primer salario de los empleados.
 
 π first_name, concat(year(hire_date),'-',month(hire_date)+1,'-',day(hire_date))→fecha_pago (employees)
