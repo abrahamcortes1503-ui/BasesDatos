@@ -71,3 +71,32 @@ otra forma usando between
 π CONCAT(job_title, job_id)→clave (jobs)
 
 
+36. Cambia el salario del empleado 115 a 8000 si el salario actual es menor que 6000.
+
+Consulta ordenanda por el id del empleado
+
+τ employee_id ((employees - σ employee_id = 115 and salary < 6000 (employees))
+∪
+(π employee_id, first_name, last_name, email, phone_number, hire_date, job_id, 8000 -> salary, commission_pct, manager_id, depaemployeesrtment_id (σ employee_id = 115 and salary < 6000 (employees))))
+
+Consulta no ordenada
+
+((employees - σ employee_id = 115 and salary < 6000 (employees))
+∪
+(π employee_id, first_name, last_name, email, phone_number, hire_date, job_id, 8000 -> salary, commission_pct, manager_id, depaemployeesrtment_id (σ employee_id = 115 and salary < 6000 (employees))))
+
+37. Inserta un nuevo empleado en la tabla de empleados con todos los detalles requeridos.
+
+(employees) ∪
+(π employee_id←207, 'nombre'→first_name, 'apellido'→last_name, 'correo@gmail.com'→email, '5555443322'→phone_number, date('2026-09-13')→hire_date, 'AD_ASST'→job_id, 8000 → salary, 0.1→commission_pct, 101→manager_id, 10→depaemployeesrtment_id  (σ employee_id ≠ 207 (employees)))
+
+38. Elimina el departamento 20.
+
+departments - σ department_id = 20 (departments)
+
+39. Cambia el ID del trabajo del empleado 110 a 'IT_PROG' si el empleado pertenece al departamento 10 y el ID del trabajo actual no comienza con 'IT'.
+
+((employees - σ employee_id = 110 and depaemployeesrtment_id = 10 and job_id ≠ 'IT%' (employees)) ∪ (π employee_id, first_name, last_name, email, phone_number, hire_date, 'IT_PROG'→job_id, salary, commission_pct, manager_id, depaemployeesrtment_id (σ employee_id=110 and depaemployeesrtment_id = 10 and job_id ≠ 'IT%' (employees))))
+
+
+
